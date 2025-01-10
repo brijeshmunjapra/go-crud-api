@@ -2,6 +2,7 @@
 package router
 
 import (
+	"crud-api/controllers"
 	"crud-api/handlers"
 
 	"github.com/gorilla/mux"
@@ -12,6 +13,9 @@ func SetupRouter() *mux.Router {
 	r := mux.NewRouter()
 
 	// Define routes
+	r.HandleFunc("/signup", controllers.Signup).Methods("POST")
+	r.HandleFunc("/login", controllers.Login).Methods("POST")
+
 	r.HandleFunc("/items", handlers.GetItems).Methods("GET")
 	r.HandleFunc("/items/{id}", handlers.GetItem).Methods("GET")
 	r.HandleFunc("/items", handlers.CreateItem).Methods("POST")
